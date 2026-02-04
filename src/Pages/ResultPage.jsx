@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
 import ResultTable from "../components/ResultTable"
+import { useSelector } from "react-redux"
 
 export default function ResultPage() {
-    const data = JSON.parse(localStorage.getItem("surveyResults")) || []
+    const data = useSelector((state) => state.surveyResults.surveyResults)
 
     if (!data.length) {
         return (
@@ -13,6 +15,7 @@ export default function ResultPage() {
                     <p className="text-gray-500">
                         Belum ada data
                     </p>
+                    
                 </div>
             </div>
         )

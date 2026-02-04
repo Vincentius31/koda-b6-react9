@@ -25,9 +25,7 @@ export default function ResultTable({ data }) {
                             <td className="p-2">{item.gender}</td>
                             <td className="p-2">{item.perokok}</td>
                             <td className="p-2">{item.rokok.join(", ")}</td>
-                            <td className="p-2"><button
-                                // Pastikan index di sini merujuk ke index dari .map()
-                                onClick={() => dispatch(removeData(i))}
+                            <td className="p-2"><button onClick={() => dispatch(removeData(i))}
                                 className="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition"
                             >
                                 Hapus

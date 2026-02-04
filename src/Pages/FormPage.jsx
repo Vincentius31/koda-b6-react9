@@ -1,9 +1,12 @@
 import FormCard from "../components/FormCard";
 import { useNavigate } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addData } from "../components/redux/reducer/surveyReducer";
 
 export default function FormPage() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const {
         register,
@@ -18,7 +21,7 @@ export default function FormPage() {
             perokok: "",
             rokok: [],
         },
-    });
+    })
 
     const perokokValue = useWatch({
         control,
@@ -26,15 +29,8 @@ export default function FormPage() {
     });
 
     const onSubmit = (data) => {
-        const existing =
-            JSON.parse(localStorage.getItem("surveyResults")) || [];
-
-        localStorage.setItem(
-            "surveyResults",
-            JSON.stringify([...existing, data])
-        );
-
-        navigate("/result");
+        dispatch(addData(data))
+        navigate("/results")
     };
 
     return (
